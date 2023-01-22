@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en" style="height:100%">
+    <link rel="icon" type="image/x-icon" href="/My project.png">    
+
+<head >
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Student Score Prediction</title>
+    
+</head>
+
+<body style="background-color: #F3F5F7;height:100%">
+
+    <nav class="navbar navbar-dark bg-dark" style="background-color: white;">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bolder" href="/">Student Score Prediction</a>
+        </div>
+      </nav>
+      <hr style="margin:0">
+    
+
+    <div class="container my-5" >
+        <div class="mb-3"style="align-items:center">
+            <form action="{{ url_for('predict')}}" method="post" > 
+
+                
+
+            
+                <label for="school_name" class="form-label">Enter Mother Education</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" style="width:100%" placeholder="" name="Medu">
+                <div id="addressHelp" class="form-text"> Enter 0 - none, 1 - primary education (4th grade), 2 - 5th to 9th grade, 3 - secondary education or 4 - higher education</div>
+                
+            </div>
+
+            <div class="mb-3">
+                <label for="age" class="form-label">Enter Father Education</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="Fedu" placeholder=""style="width:100%">
+                <div id="addressHelp" class="form-text"> Enter 0 - none, 1 - primary education (4th grade), 2 - 5th to 9th grade, 3 - secondary education or 4 - higher education</div>
+                
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Enter home to school travel time</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="travelTime" placeholder=""style="width:100%">
+                <div id="addressHelp" class="form-text"> Enter 1 - less than 15 min., 2 - 15 to 30 min., 3 - 30 min. to 1 hour, or 4 - greater than 1 hour</div>
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Enter weekly study time</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="studyTime" placeholder=""style="width:100%">
+                <div id="addressHelp" class="form-text"> Enter 1 - less than 2 hours, 2 - 2 to 5 hours, 3 - 5 to 10 hours, or 4 - greater than 10 hours</div>
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Enter  number of past class failures </label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="failures" placeholder=""style="width:100%">
+                <div id="addressHelp" class="form-text"> Enter if 1<=n<3, else 4</div>
+                
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Enter quality of family relationships</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="famrel" placeholder=""style="width:100%">
+                <div id="addressHelp" class="form-text"> Enter from 1 - very bad to 5 - excellent</div>
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Enter free time after school</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="freetime" placeholder=""style="width:100%">
+                <div id="addressHelp" class="form-text"> from 1 - very low to 5 - very high</div>
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Enter going out with friends</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="goout" placeholder=""style="width:100%">
+                <div id="addressHelp" class="form-text"> from 1 - very low to 5 - very high</div>
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Enter  current health status</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="health" placeholder=""style="width:100%">
+                <div id="addressHelp" class="form-text"> from 1 - very bad to 5 - very good</div>
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Enter number of school absences</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="absences" placeholder=""style="width:100%">
+                <div id="addressHelp" class="form-text">  Enter from 0 to 93</div>
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Enter Creativity</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="creativity" placeholder=""style="width:100%">
+                <div id="addressHelp" class="form-text">  Enter from 0 to 20</div>
+                
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Enter  student’s school </label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="school" placeholder=""style="width:100%">
+                <div id="addressHelp" class="form-text">  Enter ‘GP’ - Gabriel Pereira or ‘MS’ - Mousinho da Silveira</div>
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Enter  student’s gender </label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="gender" placeholder=""style="width:100%">
+                <div id="addressHelp" class="form-text">  Enter M-Male , F-Female, O-Other</div>
+            </div>
+            
+
+            
+            
+
+            <div class="mb-3">
+                <label for="age" class="form-label">Enter  extra educational support </label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="school_sup" placeholder=""style="width:100%">
+                <div id="addressHelp" class="form-text">  Enter in yes or no</div>
+                
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Enter family educational support</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="family_sup" placeholder=""style="width:100%">
+                <div id="addressHelp" class="form-text">  Enter in yes or no</div>
+                
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Enter student’s home address type</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="address" placeholder=""style="width:100%">
+                <div id="addressHelp" class="form-text">Enter U for Urban and R for Rural</div>
+            </div>
+            <div class="mb-3">
+                <label for="family_size" class="form-label">Enter extra paid classes within the course subject </label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="paid" placeholder=""style="width:100%">   
+                <div id="addressHelp" class="form-text">Enter in yes or no</div>             
+            </div>
+            <div class="mb-3">
+                <label for="pStatus" class="form-label">Enter extra-curricular activities</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="Activities" placeholder=""style="width:100%">  
+                <div id="addressHelp" class="form-text">Enter in yes or no</div>             
+            </div>    
+            <div class="mb-3">
+                <label for="pStatus" class="form-label">Enter whether student wants to take higher education</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="higher" style="width:100%">  
+                <div id="addressHelp" class="form-text">Enter in yes or no</div>             
+            </div>    
+            <div class="mb-3">
+                <label for="pStatus" class="form-label">Enter Internet access at home</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="internet" style="width:100%">  
+                <div id="addressHelp" class="form-text">Enter in yes or no</div>             
+            </div>    
+            
+            
+
+
+            
+            
+            
+            <button type="predict" class="btn btn-primary btn-block btn-large">Predict</button>
+            
+        </form>    
+    </div>
+    <br>
+   <br>
+   {% if prediction_text %}
+   <div class="alert alert-success" role="alert">
+    {{ prediction_text }}
+  </div>
+  {% endif %}
+   
+
+    
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+
+
+
+
+    
+</body>
+
+</html>
