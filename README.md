@@ -1,2 +1,1 @@
-# ML_project
-Project made for Double Slash 2.0
+# ML-MODEL-DEPLOYMENT-USING-FLASK
